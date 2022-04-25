@@ -1,0 +1,31 @@
+﻿@page "/"
+@using Syncfusion.EJ2.Blazor.Buttons
+@using Syncfusion.EJ2.Blazor.Inputs
+
+<EjsTextBox @ref="textbox" Placeholder='Enter the text'></EjsTextBox>
+<EjsButton @ref="ToggleBtn" @onclick="onToggleClick" CssClass="e-flat" IsToggle="true" IsPrimary="true" Content="Click"></EjsButton>
+<EjsChipList @ref="chip" EnableDelete="true" CssClass="custom">
+    <ChipCollection>
+        <ChipListChip></ChipListChip>
+    </ChipCollection>
+</EjsChipList>
+@code{
+    EjsButton ToggleBtn;
+    EjsTextBox textbox;
+    EjsChipList chip;
+
+    public void onToggleClick()
+    {
+        var value = this.textbox.Value;
+        ChipModel chips = new ChipModel();
+        chips.Text = value;
+        chip.Add(chips);
+    }
+
+}
+
+<style>
+    .e-chip-list .custom.e-chip:first-child {
+        display: none;
+    }
+</style>
