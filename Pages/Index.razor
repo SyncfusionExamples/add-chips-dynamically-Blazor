@@ -4,10 +4,9 @@
 @using Syncfusion.Blazor.Inputs
 
 <SfTextBox @ref="textbox" Placeholder='Enter the text'></SfTextBox>
-<SfButton @ref="ToggleBtn" @onclick="onToggleClick" CssClass="e-flat" IsToggle="true" IsPrimary="true" Content="Click"></SfButton>
-<SfChip @ref="chip" EnableDelete="true" CssClass="custom">
+<SfButton @ref="ToggleBtn" @onclick="onToggleClick" IsToggle="true" IsPrimary="true" Content="Add Chip Item"></SfButton>
+<SfChip @ref="chip" EnableDelete="true">
     <ChipItems>
-        <ChipItem></ChipItem>
     </ChipItems>
 </SfChip>
 @code{
@@ -21,11 +20,8 @@
         ChipItem  chips = new ChipItem();
         chips.Text = value;
         chip.AddChip(chips);
-    }
-
+    }    
 }
-<style>
-    .e-chip-list .custom.e-chip:first-child {
-        display: none;
-    }
-</style>
+
+
+
