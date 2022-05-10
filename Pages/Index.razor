@@ -1,0 +1,27 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
+
+<SfTextBox @ref="textbox" Placeholder='Enter the text'></SfTextBox>
+<SfButton @ref="ToggleBtn" @onclick="onToggleClick" IsToggle="true" IsPrimary="true" Content="Add Chip Item"></SfButton>
+<SfChip @ref="chip" EnableDelete="true">
+    <ChipItems>
+    </ChipItems>
+</SfChip>
+@code{
+    SfButton ToggleBtn;
+    SfTextBox textbox;
+    SfChip chip;
+
+    public void onToggleClick()
+    {
+        var value = this.textbox.Value;
+        ChipItem  chips = new ChipItem();
+        chips.Text = value;
+        chip.AddChip(chips);
+    }    
+}
+
+
+
