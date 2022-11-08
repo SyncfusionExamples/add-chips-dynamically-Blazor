@@ -1,4 +1,4 @@
-namespace chip.Data
+namespace DynamicChip.Data
 {
     public class WeatherForecast
     {
