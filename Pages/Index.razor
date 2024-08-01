@@ -1,27 +1,32 @@
 ﻿@page "/"
 
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.Inputs
-
-<SfTextBox @ref="textbox" Placeholder='Enter the text'></SfTextBox>
-<SfButton @ref="ToggleBtn" @onclick="onToggleClick" IsToggle="true" IsPrimary="true" Content="Add Chip Item"></SfButton>
-<SfChip @ref="chip" EnableDelete="true">
+<SfTextBox Width="200px" @bind-Value="TextboxValue" Placeholder='Enter the chip text' ShowClearButton="true"></SfTextBox>
+<SfButton @onclick="onToggleClick" IsToggle="true" IsPrimary="true" Content="Add Chip"></SfButton>
+<br />
+<br />
+<SfChip EnableDelete="true">
     <ChipItems>
+        @foreach (Chip item in ChipItemCollection)
+        {
+            <ChipItem Text="@item.Text" Value="@item.Value"></ChipItem>
+        }
     </ChipItems>
 </SfChip>
-@code{
-    SfButton ToggleBtn;
-    SfTextBox textbox;
-    SfChip chip;
+@code {
+    List<Chip> ChipItemCollection = new List<Chip>();
+    string TextboxValue = string.Empty;
 
     public void onToggleClick()
     {
-        var value = this.textbox.Value;
-        ChipItem  chips = new ChipItem();
-        chips.Text = value;
-        chip.AddChip(chips);
-    }    
+        Chip chips = new Chip();
+        chips.Text = TextboxValue;
+        chips.Value = TextboxValue;
+        ChipItemCollection.Add(chips);
+    }
+
+    public class Chip
+    {
+        public string Value { get; set; } = string.Empty;
+        public string Text { get; set; } = string.Empty;
+    }
 }
-
-
-
