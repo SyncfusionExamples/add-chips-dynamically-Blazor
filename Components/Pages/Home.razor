@@ -1,4 +1,6 @@
-﻿@page "/"
+@page "/"
+
+<PageTitle>AddingChipItems</PageTitle>
 
 <SfTextBox Width="200px" @bind-Value="TextboxValue" Placeholder='Enter the chip text' ShowClearButton="true"></SfTextBox>
 <SfButton @onclick="onToggleClick" IsToggle="true" IsPrimary="true" Content="Add Chip"></SfButton>
@@ -12,6 +14,7 @@
         }
     </ChipItems>
 </SfChip>
+
 @code {
     List<Chip> ChipItemCollection = new List<Chip>();
     string TextboxValue = string.Empty;
